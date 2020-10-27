@@ -1,0 +1,205 @@
+@charset "ISO-8859-1";
+
+/*Estilos CSS p�gina principal*/
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, pre, code, address, variable, form, fieldset, blockquote {
+ padding: 0;
+ margin: 0;
+ font-size: 100%;
+ font-weight: normal;
+}
+
+table { border-collapse: collapse; border-spacing: 0; }
+td, th, caption { font-weight: normal; text-align: left; }
+img, fieldset { border: 0; }
+ol { padding-left: 1.4em; list-style: decimal; }
+ul { padding-left: 1.4em; list-style:square; }
+q:before, q:after { content:''; }
+
+body{
+    background-color: #CF0C0C;
+    background: linear-gradient(180deg,#F0F0F0, #F0F0F0);
+}
+
+
+#CabeceraPaginaPrincipal{
+    padding-top: 10px;
+    padding-left: 10px;
+    color: white;
+    font-family: Verdana;
+    font-size: 50px;
+    
+}
+
+
+#TablaPrincipal{
+    color: white;
+    margin:auto;  
+    
+}
+
+
+#Boton_Entrar_Principal{
+    text-align: center;
+    /*border-color: #12AA0B;*/
+    /*color: black;*/	
+    width: 100px;
+    height:40px;
+    transition: width .5s;
+    background-color: rgba(82, 202, 89, .3);
+    top: 10px;
+    color: black;
+    text-align: center;
+    
+}
+
+#Boton_Entrar_Principal:hover{
+	background-color:#12AA0B;
+	width: 130px;
+ 	height: 3em;
+        color:white;
+}
+
+
+
+
+#txtUsuario{
+    width: 75%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #1d5f0a;
+}
+
+#txtContra{
+    width: 75%;
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #1d5f0a;
+}
+
+
+h2{
+	color:white;
+}
+
+h1{
+	color:white;
+}
+
+
+#contenedorprincipal{
+	background:red;
+	width:30%;
+	padding:10px 10px;
+	box-shadow:  1px 1px 8px grey;
+	border-radius: 21px;
+	background: linear-gradient(180deg,white, white);
+	-webkit-backdrop-filter: blur(20px);
+}
+
+#IMGLogoPrincipal:hover{
+    opacity: .5;
+    width:30%;
+    
+}
+
+#IMGLoginPaginaPrincipal:hover{
+    opacity: .7;
+}
+.figur{
+	float:left;
+}
+
+.destacar{
+	
+	border-radius: 15px;
+	padding: 2px;
+	background: #626262;
+	-webkit-transition: -webkit-transform 0.3s ease-in-out 0.1s;
+	box-shadow: #878686 10px 25px 25px;
+	margin: 0 65px 65px 0;
+}
+
+
+.destacar:hover{
+	-webkit-transform:scale(1.2);
+}
+
+figcaption{
+	text-align: center;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+	font-size:1.1em;
+	padding: 0px 65px 65px 0px ;
+}
+
+#navegacionPrincipal{
+	clear:both;
+}
+
+
+footer{
+	clear:both;
+	padding-top: 100px;
+}
+
+footer p{
+	font:1.6em Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+	color:#5F5D5D;
+	margin:5px 10px;
+	
+}
+
+#LiLogoSalida{
+	padding-left:450px;
+	clear:both;
+}
+
+/*Consulta Clientes*/
+
+#TablaClientes{
+    
+    width: 90%;
+    margin-top: 20px;
+    background-color:white;
+    box-shadow:  1px 1px 10px gray;
+    -webkit-backdrop-filter: blur(0px);
+    
+}
+
+tr{
+    border-radius: 10px;
+    
+}
+tr:hover{
+	-webkit-transform:scale(1.02);
+        box-shadow: 0.5px 2px 10px #00C20C; 
+        font-weight: bolder;
+}
+
+
+.EfectosReporteria{
+    background-color: #D5D5D5;
+    box-shadow: 1px 1px 40px gray;
+}
+
+#contendorIngresoClientes{
+        
+    width: 40%;   
+    background:white;
+    padding:50px 50px;
+    box-shadow:  1px 1px 8px grey;
+    border-radius: 21px;
+    -webkit-backdrop-filter: blur(20px);
+}
+
+#contenedorIngresoProductos{
+    width: 40%;   
+    background:white;
+    padding:50px 50px;
+    box-shadow:  1px 1px 8px grey;
+    border-radius: 21px;
+    -webkit-backdrop-filter: blur(20px);
+}
