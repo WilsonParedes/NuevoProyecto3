@@ -21,6 +21,15 @@
 <title>Ingreso Clintes</title>
 </head>
 <body >
+    
+  <%
+        String nitclienteabuscar = request.getParameter("getbuscarcliente");
+        
+        request.getSession().setAttribute("clientebusqueda", request.getParameter("getbuscarcliente"));
+      
+        
+    %>    
+    
 <figure>
 	<img src="Imagenes/LogoPaginaPrincipal.png" alt ="LogoPaginaPrincipal" width=100% height="120">
 </figure>
@@ -60,6 +69,13 @@
 <br>
 
 <section class="section EfectosReporteria">
+    
+     <%
+    
+    
+    if(nitclienteabuscar == null || nitclienteabuscar==""){
+                
+    %>  
     <center><table id="TablaClientes"class="table table-hover">
         <thead class="thead-dark">
             <tr>
@@ -93,12 +109,79 @@
                 <th scope="col"><%=clien.getEstadocivil()%></th>
                 <th scope="col">"PatitoFeliz"</th>
                 <th scope="col">"Hola"</th>
+                <th scope ="row">
+                    <figure>
+                        <img src="Imagenes/Eliminar.png" width="27" height="27">                  
+                    </figure>
+                </th>
+                <th scope="row">
+                    <figure>
+                        <img src="Imagenes/Modificar.png" width="27" height="27">                     
+                    </figure>
+                </th>
                 </tr>
               <% 
                }
               %>              
         </tbody>
     </table></center>
+        
+        <% }else{
+            
+        %>
+        <center><table id="TablaClientes"class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NIT</th>
+                <th scope="col">DPI</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha Nacimiento</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Estado Civil</th>
+                <th scope="col">Nombre Empresa</th>
+                <th scope="col">Estado Civil</th>
+            </tr>
+        </thead>
+        <tbody>
+         <%
+            //1. Crear una instancia DAO correpondiente a las carreras
+            ArrayList<Clientes> clientes= VariablesGlobales.gestion.busquedapreparadaClientes(nitclienteabuscar);
+            int i=0;
+            for( Clientes clien : clientes){
+            //4. Pintar el HTML que correponde a cada carrera
+             i++;
+         %>
+            <tr>
+                <th scope="col"><%=i%></th>
+                <th scope="col"><%= clien.getNit()%></th>
+                <th scope="col">"12345678"</th>
+                <th scope="col"><%= clien.getNombre()%></th>
+                <th scope="col"><%=clien.getFecha()%></th>
+                <th scope="col"><%=clien.getGenero()%></th>
+                <th scope="col"><%=clien.getEstadocivil()%></th>
+                <th scope="col">"PatitoFeliz"</th>
+                <th scope="col">"Hola"</th>
+                <th scope ="row">
+                    <figure>
+                        <a href="PruebaEliminar.jsp"><img src="Imagenes/Eliminar.png" width="27" height="27"></a>                      
+                    </figure>
+                </th>
+                <th scope="row">
+                    <figure>
+                        <a href="#"><img src="Imagenes/Modificar.png" width="27" height="27"></a>                      
+                    </figure>
+                </th>
+                </tr>
+              <% 
+               }
+              %>              
+        </tbody>
+    </table></center>
+        <%
+        }
+        %>
+        
         <form action="PaginaPrincipal.jsp">
           <button type="submit" class="btn btn-secondary">Regresar</button>
         </form>

@@ -24,6 +24,8 @@ public class VariablesGlobales {
     public static DataSistema arrayProductos = new DataSistema();
     public DataSistema arrayListaOrden = new DataSistema();
     public String categoria [] = {"Aceites y Lubricantes", "Llantas","Accesorios"};
+    public static final String BDDCLIENTES = "clientes";
+    public static final String BDDProductos = "productos";
     
     
     public static final String DRIVER_DB = "org.postgresql.Driver";

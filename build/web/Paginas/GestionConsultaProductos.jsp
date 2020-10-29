@@ -107,6 +107,11 @@
                         <a><img src="Imagenes/Eliminar.png" width="27" height="27"></a>                      
                     </figure>
                 </th>
+                <th scope="row">
+                    <figure>
+                        <img src="Imagenes/Modificar.png" width="27" height="27">                    
+                    </figure>
+                </th>
             </tr>
             
               <% 
@@ -146,6 +151,11 @@
                 <th scope="row">
                     <figure>
                         <a href="PruebaEliminar.jsp"><img src="Imagenes/Eliminar.png" width="27" height="27"></a>                      
+                    </figure>
+                </th>
+                <th scope="row">
+                    <figure>
+                        <a href="#"><img src="Imagenes/Modificar.png" width="27" height="27"></a>                      
                     </figure>
                 </th>
             </tr>

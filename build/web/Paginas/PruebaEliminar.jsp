@@ -37,17 +37,41 @@
 <br>
 
 <section>
+        <%
+        if((request.getSession().getAttribute("namesession")!=null)&&( request.getSession().getAttribute("clientebusqueda"))==null){
+        %>
+        
     
-    <%
+        <%
            String eliminarproducto = (String) request.getSession().getAttribute("namesession");
-           VariablesGlobales.gestion.eliminarRegistro(eliminarproducto);
+           VariablesGlobales.gestion.eliminarRegistro(VariablesGlobales.BDDProductos, eliminarproducto);
+           request.getSession().getAttribute("");
+         
+             
         %>
         <center> <div class="container" id="contenedorIngresoProductos">
             <div class="alert alert-success" role="alert">
                 El producto fue eliminado con exito. <a href="GestionConsultaProductos.jsp" class="alert-link">Volver Listado Productos</a>. 
             </div>
-            
-            </div></center>
+        </div></center>
+        
+        <%
+          }else{
+        %>
+        <%
+           String eliminacliente = (String) request.getSession().getAttribute("clientebusqueda");
+           VariablesGlobales.gestion.eliminarRegistro(VariablesGlobales.BDDCLIENTES, eliminacliente);
+           request.getSession().getAttribute("");
+        %>
+        <center> <div class="container" id="contenedorIngresoProductos">
+            <div class="alert alert-success" role="alert">
+                El Cliente fue eliminado con exito. <a href="GestionConsultaClientes.jsp" class="alert-link">Volver Listado de Clientes</a>. 
+            </div>
+        </div></center>
+        
+        <%
+        }
+        %>
 </section>   
     
 </body>

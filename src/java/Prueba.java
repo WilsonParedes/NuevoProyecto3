@@ -3,12 +3,13 @@ import Modulos.DataSistema.Clientes;
 import Modulos.Herramientas.GestionBDDs;
 import Modulos.Herramientas.VariablesGlobales;
 import java.sql.*;
-public class Prueba {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		/*try {
+public class Prueba {
+    
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+        /*try {
 			//crear conexion
 			Connection conectar = DriverManager.getConnection(VariablesGlobales.URL_DB,VariablesGlobales.USER_DB, VariablesGlobales.PASSWORD_DB);
 			
@@ -28,18 +29,9 @@ public class Prueba {
 			e.printStackTrace();
 		}*/
 
-		/*System.out.println(gestion.getBDDClientes().toString());*/
-		
-		
-		VariablesGlobales.gestion.eliminarRegistro("Lubricante amalie");
-		
-		
-	}
-		
-		
-		
-
-	
-		
-
+ /*System.out.println(gestion.getBDDClientes().toString());*/
+        VariablesGlobales.gestion.eliminarRegistro(VariablesGlobales.BDDCLIENTES, "71347182");
+        
+    }
+    
 }
