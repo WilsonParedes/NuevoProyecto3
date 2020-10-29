@@ -165,8 +165,14 @@ footer p{
     margin-top: 20px;
     background-color:white;
     box-shadow:  1px 1px 10px gray;
-    -webkit-backdrop-filter: blur(0px);
     
+}
+
+#TablaProductos{
+    width: 90%;
+    margin-top: 20px;
+    background-color:white;
+    box-shadow:  1px 1px 10px gray;
 }
 
 tr{
@@ -192,7 +198,6 @@ tr:hover{
     padding:50px 50px;
     box-shadow:  1px 1px 8px grey;
     border-radius: 21px;
-    -webkit-backdrop-filter: blur(20px);
 }
 
 #contenedorIngresoProductos{
@@ -201,5 +206,114 @@ tr:hover{
     padding:50px 50px;
     box-shadow:  1px 1px 8px grey;
     border-radius: 21px;
-    -webkit-backdrop-filter: blur(20px);
+}
+
+
+
+/*Estilos pagina princpal*/
+
+#header{
+    margin:auto;
+    width: 100%;
+    
+}
+
+ul, ol{
+    list-style: none;
+}
+
+.nav li a{
+    backgroud-color:#000;
+    color:"#fff";
+    text-decoration: none;
+    display:block;
+}
+.nav > li{
+    float:left;
+    margin: 0px 60px 0px 0px;
+    color:white;
+}
+
+.nav>ul{
+    
+}
+.nav>li:hover{
+    color:gray;
+}
+
+
+.nav li ul{
+    display:none;
+    position: absolute;
+    min-width: 200px;
+    background-color: #232525;
+}
+
+.nav li a:hover{
+    background-color:black;
+    -webkit-transform:scale(1.02);
+    box-shadow:  1px 1px 5px white;
+    border-radius: 4px;
+    font-weight: bold;
+    color:black;
+    -webkit-transition: -webkit-transform 0.05s ease-in-out 0.05s;
+   
+}
+.nav li:hover>ul{
+    display:block;
+}
+
+.navbar-nav{
+    opacity: 0.95;
+    border-radius: 5px;
+    
+}
+
+
+
+/*Estilos navegacion pagina ingreso clientes y productos*/
+
+
+#header1{
+    margin:auto;
+    width: 100%;
+    
+}
+
+
+ul, ol{
+    list-style: none;
+}
+
+.navegacionotraspaginas li a    {
+    color:white;
+    text-decoration: none;
+    
+}
+
+.navegacionotraspaginas li{
+    float:left;
+    margin: 0px 15px 0px 0px;
+    color:white;
+}
+
+
+.navegacionotraspaginas li{
+    min-width: 140px;
+}
+
+.navegacionotraspaginas li :hover{
+    -webkit-transform:scale(1.03);
+    box-shadow:  1px 1px 7px white;
+    border-radius: 4px;
+    font-weight: normal;
+    color:white;
+    border-bottom-color: white;
+    -webkit-transition: -webkit-transform 0.005s ease-in-out 0.005s;
+}
+
+.navbar-nav{
+    
+    border-radius: 5px;
+    
 }

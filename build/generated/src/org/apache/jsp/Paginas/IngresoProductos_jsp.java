@@ -81,7 +81,7 @@ public final class IngresoProductos_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("    <center><div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">\n");
       out.write("        <ul class=\"navbar-nav\">\n");
       out.write("            <li class=\"nav-item\">\n");
-      out.write("                <a class=\"nav-link\" href=\"GestionConsultaClientes.jsp\">Listado de Productos</a>\n");
+      out.write("                <a class=\"nav-link\" href=\"GestionConsultaProductos.jsp\">Listado de Productos</a>\n");
       out.write("            </li>\n");
       out.write("            <li class=\"nav-item\">\n");
       out.write("                <a class=\"nav-link\" href=\"PaginaPrincipal.jsp\">Regresar</a>\n");
@@ -105,7 +105,7 @@ public final class IngresoProductos_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("\t\n");
       out.write("        <form action=\"IngresoProductos.jsp\" class=\"was-validated\" id=\"TablaPrincipalIngresoClientes\" method=\"POST\">\n");
       out.write("            <div class=\"form-group\">\n");
-      out.write("      \t\tIngrese Nombre Producto <input type=\"text\" class=\"form-control\" name=\"txtNProductos\" id =\"txtNProductos\" required>\n");
+      out.write("      \t\tIngrese Nombre Producto <input type=\"text\" class=\"form-control\" name=\"txtNProductos\" id =\"txtNProductos\" required autofocus>\n");
       out.write("      \t\t<div class=\"valid-feedback\">Valido.</div>\n");
       out.write("      \t\t<div class=\"invalid-feedback\">complete el campo.</div>\n");
       out.write("            </div>\n");
@@ -116,7 +116,7 @@ public final class IngresoProductos_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("            </div>\n");
       out.write("            <div class=\"form-group\">\n");
       out.write("                Seleccione Categoria\n");
-      out.write("                <input type=\"text\" class=\"form-control\" name=\"Categoria\" list=\"ListaCategoria\"> \n");
+      out.write("                <input type=\"text\" class=\"form-control\" name=\"Categoria\" list=\"ListaCategoria\" > \n");
       out.write("      \t\t<div class=\"valid-feedback\">Valido.</div>\n");
       out.write("      \t\t<div class=\"invalid-feedback\">complete el campo.</div>\n");
       out.write("                    <datalist id=\"ListaCategoria\"> \n");
@@ -141,7 +141,7 @@ public final class IngresoProductos_jsp extends org.apache.jasper.runtime.HttpJs
             	//1. Crear una instancia de CarreraDAO
               	GestionBDDs gestion = new GestionBDDs();
                 //2. Crear una instancia de Carrera
-                Productos productos = new Productos("Categoria",NombreProducto,Marca,Integer.parseInt(Precio));
+                Productos productos = new Productos(Categoria,NombreProducto,Marca,Integer.parseInt(Precio));
                 
                 //3. Insertar en la DB la carrera
                 gestion.saveCarrera(null,productos);

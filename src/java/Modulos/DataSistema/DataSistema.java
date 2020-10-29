@@ -54,8 +54,8 @@ public class DataSistema {
     public void getEliminarProducto(int view){ ListaProductos.remove(view); }
     public void getEliminarOrden(int view){ ListaOrden.remove(view); }
     
-    public void LimpiarArrayClientes(){ListaClientes.clear();};
-
+    public void LimpiarArrayClientes(){ListaClientes.clear();}
+    public void LimpiarArrayProductos(){ListaProductos.clear();}
 
     public String toString() {
         for(Clientes tempclientes: ListaClientes){

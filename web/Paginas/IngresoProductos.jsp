@@ -20,6 +20,9 @@
 <title>Ingreso Productos</title>
 </head>
 
+
+
+
 <script>
     Grabar("El registro fue almacenado con éxito");
 </script>
@@ -28,21 +31,21 @@
 <figure>
 	<img src="Imagenes/LogoPaginaPrincipal.png" alt ="LogoPaginaPrincipal" width=100% height="120">
 </figure>
-<nav id="navegacionPrincipal" class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Navegacion Ingreso Productos</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    <center><div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="GestionConsultaClientes.jsp">Listado de Productos</a>
+<nav id="navegacionPrincipal" class="navbar  bg-dark navbar-dark">
+    <div id="header1">
+        <ul class="navegacionotraspaginas">
+            <li>
+                <a class="navbar-brand" href="#">Navegacion Ingreso Clientes</a>
             </li>
-            <li class="nav-item">
+            
+            <li>
+                <a class="nav-link" href="GestionConsultaClientes.jsp">Ver Listado de Productos</a> 
+            </li>  
+            <li>
                 <a class="nav-link" href="PaginaPrincipal.jsp">Regresar</a>
-            </li>
+            </li> 
         </ul>
-    </div></center>
+    </div>  
 </nav>
 <br>
 
@@ -52,13 +55,13 @@
     <% 
     	String NombreProducto= request.getParameter("txtNProductos");
 	String Marca= request.getParameter("txtMarca");
-	String Categoria= request.getParameter("txtCategoria");
+	String Categoria= request.getParameter("Categoria");
 	String Precio = request.getParameter("txtPrecio");
         if(NombreProducto==null && Marca==null && Categoria==null && Precio==null){
         %>	
         <form action="IngresoProductos.jsp" class="was-validated" id="TablaPrincipalIngresoClientes" method="POST">
             <div class="form-group">
-      		Ingrese Nombre Producto <input type="text" class="form-control" name="txtNProductos" id ="txtNProductos" required>
+      		Ingrese Nombre Producto <input type="text" class="form-control" name="txtNProductos" id ="txtNProductos" required autofocus>
       		<div class="valid-feedback">Valido.</div>
       		<div class="invalid-feedback">complete el campo.</div>
             </div>
@@ -69,10 +72,11 @@
             </div>
             <div class="form-group">
                 Seleccione Categoria
-                <input type="text" class="form-control" name="Categoria" list="ListaCategoria"> 
+                <input type="text" class="form-control" id="Categoria" name="Categoria" list="ListaCategoria" > 
       		<div class="valid-feedback">Valido.</div>
       		<div class="invalid-feedback">complete el campo.</div>
                     <datalist id="ListaCategoria"> 
+                        <option selected>Seleccionar</option>
                         <option value="Aceites y Lubricantes"> 
                         <option value="Llantas"> 
                         <option value="Accesorios"> 
@@ -93,7 +97,7 @@
             	//1. Crear una instancia de CarreraDAO
               	GestionBDDs gestion = new GestionBDDs();
                 //2. Crear una instancia de Carrera
-                Productos productos = new Productos("Categoria",NombreProducto,Marca,Integer.parseInt(Precio));
+                Productos productos = new Productos(Categoria,NombreProducto,Marca,Integer.parseInt(Precio));
                 
                 //3. Insertar en la DB la carrera
                 gestion.saveCarrera(null,productos);

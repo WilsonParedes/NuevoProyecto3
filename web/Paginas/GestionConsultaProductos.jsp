@@ -20,24 +20,63 @@
 <title>Ingreso Productos</title>
 </head>
 <body >
+    
+    <%
+        String nombreproductobuscar = request.getParameter("getbuscar");
+        
+        request.getSession().setAttribute("namesession", request.getParameter("getbuscar"));
+      
+        
+    %>
 <figure>
 	<img src="Imagenes/LogoPaginaPrincipal.png" alt ="LogoPaginaPrincipal" width=100% height="120">
 </figure>
-<nav id="navegacionPrincipal" class="navbar navbar-expand-md bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">Navegacion Consulta Clientes</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="PaginaPrincipal.jsp">Regresar</a>
-      </li>
-    </ul>
-  </div>  
+
+
+<nav id="navegacionPrincipal" class="navbar  bg-dark navbar-dark">
+    
+    <div id="header1">
+        
+        <ul class="navegacionotraspaginas">
+            <li class="nav-item">
+                <a class="navbar-brand" >Navegacion Consulta de Productos</a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline"action="GestionConsultaProductos.jsp">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name ="getbuscar"id="buscar">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+                
+            </li>  
+            <li>
+               
+                <a href="PruebaEliminar.jsp"><button class="btn btn-outline-success my-2 my-sm-0" type="submit" > Eliminar </button></a>
+   
+            </li>
+            <li>
+               
+                <a href="#"><button class="btn btn-outline-success my-2 my-sm-0" type="submit" > Modificar </button></a>
+   
+            </li>
+            <li>
+                <a class="nav-link" href="IngresoProductos.jsp">Ingreso Productos</a>
+                    
+            </li>
+            <li>
+                <a class="nav-link" href="PaginaPrincipal.jsp">Regresar</a>     
+            </li>
+        </ul>
+    </div>  
 </nav>
+<br>
 
 <section class="section EfectosReporteria">
+     <%
+    
+    
+    if(nombreproductobuscar == null ||nombreproductobuscar==""){
+                
+    %>  
     <center><table id="TablaProductos"class="table table-hover">
         <thead class="thead-dark">
             <tr>
@@ -51,7 +90,7 @@
         <tbody>
          <%
             //1. Crear una instancia DAO correpondiente a las carreras
-            ArrayList<Productos> productos= VariablesGlobales.gestion.getBDDClientes();
+            ArrayList<Productos> productos= VariablesGlobales.gestion.getBDDProductos();
             int i=0;
             for( Productos produ: productos){
             //4. Pintar el HTML que correponde a cada carrera
@@ -63,16 +102,74 @@
                 <th scope="col"><%=produ.getMarca()%></th>
                 <th scope="col"><%=produ.getCategoria()%></th>
                 <th scope="col"><%=produ.getPrecio()%></th>
-                
+                <th scope="row">
+                    <figure>
+                        <a><img src="Imagenes/Eliminar.png" width="27" height="27"></a>                      
+                    </figure>
+                </th>
             </tr>
+            
               <% 
+                  
                }
               %>              
         </tbody>
     </table></center>
+        <% }else{
+            
+        %>
+        <center><table id="TablaProductos"class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID </th>
+                <th scope="col">Nombre Producto</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+         <%
+            //1. Crear una instancia DAO correpondiente a las carreras
+            ArrayList<Productos> productos= VariablesGlobales.gestion.busquedapreparadaProductos(nombreproductobuscar);
+            int i=0;
+            for( Productos produ: productos){
+            //4. Pintar el HTML que correponde a cada carrera
+             i++;
+         %>
+            <tr>
+                <th scope="col"><%=i%></th>
+                <th scope="col"><%=produ.getProducto()%></th>
+                <th scope="col"><%=produ.getMarca()%></th>
+                <th scope="col"><%=produ.getCategoria()%></th>
+                <th scope="col"><%=produ.getPrecio()%></th>
+                <th scope="row">
+                    <figure>
+                        <a href="PruebaEliminar.jsp"><img src="Imagenes/Eliminar.png" width="27" height="27"></a>                      
+                    </figure>
+                </th>
+            </tr>
+            
+              <% 
+                  
+               }
+              %>              
+        </tbody>
+    </table></center>
+        
+    
+           
+        <%
+        }
+        %>
+        
         <form action="PaginaPrincipal.jsp">
           <button type="submit" class="btn btn-secondary">Regresar</button>
         </form>
+        
+       
+
+    
 </section>
 
 </body>

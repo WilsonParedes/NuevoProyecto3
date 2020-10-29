@@ -24,19 +24,40 @@
 <figure>
 	<img src="Imagenes/LogoPaginaPrincipal.png" alt ="LogoPaginaPrincipal" width=100% height="120">
 </figure>
-<nav id="navegacionPrincipal" class="navbar navbar-expand-md bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">Navegacion Consulta Clientes</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="PaginaPrincipal.jsp">Regresar</a>
-      </li>
-    </ul>
-  </div>  
+<nav id="navegacionPrincipal" class="navbar  bg-dark navbar-dark">
+    
+    <div id="header1">
+        <ul class="navegacionotraspaginas">
+            <li>
+                <a class="navbar-brand" href="#">Navegacion Consulta de Clientes</a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline"action="GestionConsultaClientes.jsp">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name ="getbuscarcliente"id="buscar">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+            </li>  
+            <li>
+               
+                <a href="PruebaEliminar.jsp"><button class="btn btn-outline-success my-2 my-sm-0" type="submit" > Eliminar </button></a>
+   
+            </li>
+            <li>
+               
+                <a href="#"><button class="btn btn-outline-success my-2 my-sm-0" type="submit" > Modificar </button></a>
+   
+            </li>
+            <li>
+                <a class="nav-link" href="IngresoClientes.jsp">Ingreso Clientes</a>
+                    
+            </li>
+            <li>
+                <a class="nav-link" href="PaginaPrincipal.jsp">Regresar</a>     
+            </li>
+        </ul>
+    </div>  
 </nav>
+<br>
 
 <section class="section EfectosReporteria">
     <center><table id="TablaClientes"class="table table-hover">

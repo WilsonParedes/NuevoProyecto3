@@ -28,24 +28,27 @@
 <figure>
 	<img src="Imagenes/LogoPaginaPrincipal.png" alt ="LogoPaginaPrincipal" width=100% height="120">
 </figure>
-<nav id="navegacionPrincipal" class="navbar navbar-expand-md bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">Navegacion Ingreso Clientes</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="PaginaPrincipal.jsp">Regresar</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="GestionConsultaClientes.jsp">Ver Listado de CLientes</a>
-      </li>
-    </ul>
-  </div>  
+    
+    
+    
+<nav id="navegacionPrincipal" class="navbar  bg-dark navbar-dark">
+    
+    <div id="header1">
+        <ul class="navegacionotraspaginas">
+            <li>
+              <a class="navbar-brand" href="#">Navegacion Ingreso Clientes</a>  
+            </li>
+            <li>
+                <a class="nav-link" href="GestionConsultaClientes.jsp">Ver Listado de CLientes</a> 
+            </li>  
+            <li>
+                <a class="nav-link" href="PaginaPrincipal.jsp">Regresar</a>
+            </li> 
+        </ul>
+    </div>  
 </nav>
 <br>
-
+    
 
 <section>
     <center><div class="container" id="contendorIngresoClientes" >
@@ -57,7 +60,7 @@
 	   	String ContactoEmpresa = request.getParameter("txtNombreCompletoIngresoClientes");
             if(NIT==null && DPI==null && Nombre==null && DatosEmpresa==null&&ContactoEmpresa==null){
         %>	
-                <form action="IngresoClientes.jsp" class="was-validated" id="TablaPrincipalIngresoClientes" method="POST">
+            <form action="IngresoClientes.jsp" class="was-validated" id="TablaPrincipalIngresoClientes" method="POST">
     		<div class="form-group">
       			Ingrese NIT: <input pattern="[0-9]{8}" class="form-control" maxlength="8" name="txtNITIngresoClientes" id ="txtNITIngresoClientes" required>
       			<div class="valid-feedback">Valido.</div>
@@ -107,7 +110,7 @@
                 %>
                 
             <form action="IngresoClientes.jsp">
-          	<button type="submit" class="btn btn-secondary">Regresar Menu</button>
+          	<button type="submit" class="btn btn-secondary">Ingresar ootr Cliente</button>
             </form>
         </div></center>
 </section>

@@ -30,8 +30,8 @@ public class Prueba {
 
 		/*System.out.println(gestion.getBDDClientes().toString());*/
 		
-		VariablesGlobales.gest.saveCarrera(new Clientes("Wilson Roasdfasdf","3412341","9/9/1990", "Masculino","SOltero",1));
 		
+		VariablesGlobales.gestion.eliminarRegistro("Lubricante amalie");
 		
 		
 	}
