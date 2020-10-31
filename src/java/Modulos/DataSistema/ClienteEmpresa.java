@@ -6,7 +6,7 @@ public class ClienteEmpresa extends Clientes {
     public int descuento;
 
     public ClienteEmpresa(String nombre, String nit, String fecha, String genero, String estadocivil, String razonsocial, String contacto, int descuento,int tipo) {
-        super(nombre, nit, fecha, genero, estadocivil,tipo);
+        super(nombre, nit, fecha, genero, estadocivil,tipo,"",razonsocial,contacto);
         this.razonsocial = razonsocial;
         this.contacto= contacto;
         this.descuento= descuento;

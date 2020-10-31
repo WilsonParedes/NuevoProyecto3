@@ -8,16 +8,7 @@ import Modulos.Herramientas.Usuarios;
 public class DataSistema {
     public static ArrayList<Clientes> ListaClientes = new ArrayList<Clientes>();
 
-    public static ArrayList<Productos> ListaProductos= new ArrayList<Productos>(Arrays.asList(
-            new Productos("Llantas","Llanta Rin 14'","Maxxis",450),
-            new Productos("Aceites y Lubricantes","Aceite Sintetico","Castrol",50),
-            new Productos("Aceites y Lubricantes","Aceite Semisintetico","Amalie",35),
-            new Productos("Accesorios","Alfombras","Patito",110),
-            new Productos("Luces","Juego Luces Led","LED Master",45),
-            new Productos("Llantas","Llantas Rin 16'","GoodYear",525),
-            new Productos("Llantas","Llantas Rin 15'","Firestone",350),
-            new Productos("Baterias","Bateria Corolla","Bosch",750)
-    ));
+    public static ArrayList<Productos> ListaProductos= new ArrayList<Productos>();
 
     public static ArrayList<Usuarios> ListaUsuarios = new ArrayList<Usuarios>(20);
     public static ArrayList<Orden>ListaOrden=new ArrayList<Orden>(20);

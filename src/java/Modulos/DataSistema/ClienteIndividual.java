@@ -5,7 +5,8 @@ public class ClienteIndividual extends Clientes {
 
 
     public ClienteIndividual(String dpi, String nombre, String nit, String fecha, String genero, String estadocivil,int tipo){
-        super(nombre, nit, fecha, genero, estadocivil,tipo);
+        super(nombre, nit, fecha, genero,estadocivil,tipo,dpi,"","");
+        
         this.dpi = dpi;
     }
 

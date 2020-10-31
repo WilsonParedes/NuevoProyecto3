@@ -14,17 +14,22 @@
   	<meta http-equiv="Pragma" content="no-cache">
 	<link rel="stylesheet"  href="Estilos.css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">  
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
 <title>Ingreso Productos</title>
 </head>
 <body >
-    
+
     <%
         String nombreproductobuscar = request.getParameter("getbuscar");
+        String cambiarElemento=request.getParameter("txtNombreProductoVentanaEmergente");
         
         request.getSession().setAttribute("namesession", request.getParameter("getbuscar"));
+        request.getSession().setAttribute("cambiarElemento", cambiarElemento);
       
         
     %>
@@ -43,7 +48,7 @@
             </li>
             <li class="nav-item">
                 <form class="form-inline"action="GestionConsultaProductos.jsp">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name ="getbuscar"id="buscar">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Nombre Producto" aria-label="Search" name ="getbuscar"id="buscar">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
                 
@@ -55,7 +60,7 @@
             </li>
             <li>
                
-                <a href="#"><button class="btn btn-outline-success my-2 my-sm-0" type="submit" > Modificar </button></a>
+                <button id="btn-abrir-popup" class="btn btn-outline-success my-2 my-sm-0" type="submit" > Modificar </button>
    
             </li>
             <li>
@@ -71,10 +76,16 @@
 <br>
 
 <section class="section EfectosReporteria">
-     <%
+    <%
+        if(cambiarElemento==null){
+            
+        
+    %>
     
     
-    if(nombreproductobuscar == null ||nombreproductobuscar==""){
+    
+    <%
+        if(nombreproductobuscar == null ||nombreproductobuscar==""){
                 
     %>  
     <center><table id="TablaProductos"class="table table-hover">
@@ -120,9 +131,9 @@
               %>              
         </tbody>
     </table></center>
-        <% }else{
+    <%  }else{
             
-        %>
+    %>
         <center><table id="TablaProductos"class="table table-hover">
         <thead class="thead-dark">
             <tr>
@@ -154,7 +165,7 @@
                     </figure>
                 </th>
                 <th scope="row">
-                    <figure>
+                    <figure id="btn-abrir-popupdesdelatabla" >
                         <a href="#"><img src="Imagenes/Modificar.png" width="27" height="27"></a>                      
                     </figure>
                 </th>
@@ -166,20 +177,44 @@
               %>              
         </tbody>
     </table></center>
-        
-    
-           
-        <%
+   
+    <%
         }
+    %>
+        
+
+    
+    <%}else{
+           
         %>
         
+        
+        <center> <div class="container" id="contenedorIngresoProductos">
+            <div class="alert alert-success" role="alert">
+                El producto fue modificado con exito. <a href="GestionConsultaProductos.jsp" class="alert-link">Volver Listado Productos</a>. 
+            </div>
+        </div></center>
+        <%
+}%>
+
         <form action="PaginaPrincipal.jsp">
           <button type="submit" class="btn btn-secondary">Regresar</button>
         </form>
-        
-       
+    <!-- ----------------
+    VETANA EMERGENTE
+    ------------------ --> 
+    <div class="overlay" id="overlay">
+	<div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+                    <form action="ModificarElementosBDDProductos.jsp">
+                        <div class="contenedor-inputs">
+                            <jsp:include page="ModificarElementosBDDProductos.jsp"></jsp:include>
+			</div>
+                    </form>
+	</div>
+    </div>
 
-    
+	<script src="EventosVentanaEmergente.js"></script>
 </section>
 
 </body>

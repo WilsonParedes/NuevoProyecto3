@@ -44,7 +44,14 @@
                     </li>
                 </ul>
             </li>   
-            <li>Orden de Compra</li>  
+            <li>Orden de Compra
+                <ul class="navbar-nav">
+                    <li>
+                        <a class="nav-link" href="OrdendeCompra.jsp">Ingresar Orden</a>
+                    </li>    
+                   
+                </ul>
+             </li>  
             <li id="LiLogoSalida">
                 <figure class="nav">
                     <a href="index.jsp"><img src="Imagenes/Exit.png" width="40" height="40"></a>

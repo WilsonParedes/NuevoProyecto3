@@ -60,18 +60,23 @@ public final class GestionConsultaProductos_jsp extends org.apache.jasper.runtim
       out.write("  \t<meta http-equiv=\"Pragma\" content=\"no-cache\">\n");
       out.write("\t<link rel=\"stylesheet\"  href=\"Estilos.css\"/>\n");
       out.write("\t<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\n");
+      out.write("        <link href=\"https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans\" rel=\"stylesheet\"> \n");
+      out.write("\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\">  \n");
       out.write("  \t<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n");
       out.write("  \t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\n");
       out.write("  \t<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\n");
+      out.write("        \n");
       out.write("<title>Ingreso Productos</title>\n");
       out.write("</head>\n");
       out.write("<body >\n");
-      out.write("    \n");
+      out.write("\n");
       out.write("    ");
 
         String nombreproductobuscar = request.getParameter("getbuscar");
+        String cambiarElemento=request.getParameter("txtNombreProductoVentanaEmergente");
         
         request.getSession().setAttribute("namesession", request.getParameter("getbuscar"));
+        request.getSession().setAttribute("cambiarElemento", cambiarElemento);
       
         
     
@@ -103,7 +108,7 @@ public final class GestionConsultaProductos_jsp extends org.apache.jasper.runtim
       out.write("            </li>\n");
       out.write("            <li>\n");
       out.write("               \n");
-      out.write("                <a href=\"#\"><button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" > Modificar </button></a>\n");
+      out.write("                <button id=\"btn-abrir-popup\" class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" > Modificar </button>\n");
       out.write("   \n");
       out.write("            </li>\n");
       out.write("            <li>\n");
@@ -119,11 +124,19 @@ public final class GestionConsultaProductos_jsp extends org.apache.jasper.runtim
       out.write("<br>\n");
       out.write("\n");
       out.write("<section class=\"section EfectosReporteria\">\n");
-      out.write("     ");
+      out.write("    ");
 
+        if(cambiarElemento==null){
+            
+        
     
-    
-    if(nombreproductobuscar == null ||nombreproductobuscar==""){
+      out.write("\n");
+      out.write("    \n");
+      out.write("    \n");
+      out.write("    \n");
+      out.write("    ");
+
+        if(nombreproductobuscar == null ||nombreproductobuscar==""){
                 
     
       out.write("  \n");
@@ -169,6 +182,11 @@ public final class GestionConsultaProductos_jsp extends org.apache.jasper.runtim
       out.write("                        <a><img src=\"Imagenes/Eliminar.png\" width=\"27\" height=\"27\"></a>                      \n");
       out.write("                    </figure>\n");
       out.write("                </th>\n");
+      out.write("                <th scope=\"row\">\n");
+      out.write("                    <figure>\n");
+      out.write("                        <img src=\"Imagenes/Modificar.png\" width=\"27\" height=\"27\">                    \n");
+      out.write("                    </figure>\n");
+      out.write("                </th>\n");
       out.write("            </tr>\n");
       out.write("            \n");
       out.write("              ");
@@ -179,10 +197,10 @@ public final class GestionConsultaProductos_jsp extends org.apache.jasper.runtim
       out.write("              \n");
       out.write("        </tbody>\n");
       out.write("    </table></center>\n");
-      out.write("        ");
- }else{
+      out.write("    ");
+  }else{
             
-        
+    
       out.write("\n");
       out.write("        <center><table id=\"TablaProductos\"class=\"table table-hover\">\n");
       out.write("        <thead class=\"thead-dark\">\n");
@@ -226,6 +244,11 @@ public final class GestionConsultaProductos_jsp extends org.apache.jasper.runtim
       out.write("                        <a href=\"PruebaEliminar.jsp\"><img src=\"Imagenes/Eliminar.png\" width=\"27\" height=\"27\"></a>                      \n");
       out.write("                    </figure>\n");
       out.write("                </th>\n");
+      out.write("                <th scope=\"row\">\n");
+      out.write("                    <figure id=\"btn-abrir-popupdesdelatabla\" >\n");
+      out.write("                        <a href=\"#\"><img src=\"Imagenes/Modificar.png\" width=\"27\" height=\"27\"></a>                      \n");
+      out.write("                    </figure>\n");
+      out.write("                </th>\n");
       out.write("            </tr>\n");
       out.write("            \n");
       out.write("              ");
@@ -236,22 +259,52 @@ public final class GestionConsultaProductos_jsp extends org.apache.jasper.runtim
       out.write("              \n");
       out.write("        </tbody>\n");
       out.write("    </table></center>\n");
-      out.write("        \n");
-      out.write("    \n");
-      out.write("           \n");
-      out.write("        ");
+      out.write("   \n");
+      out.write("    ");
 
         }
+    
+      out.write("\n");
+      out.write("        \n");
+      out.write("\n");
+      out.write("    \n");
+      out.write("    ");
+}else{
+           
         
       out.write("\n");
       out.write("        \n");
+      out.write("        \n");
+      out.write("        <center> <div class=\"container\" id=\"contenedorIngresoProductos\">\n");
+      out.write("            <div class=\"alert alert-success\" role=\"alert\">\n");
+      out.write("                El producto fue modificado con exito. <a href=\"GestionConsultaProductos.jsp\" class=\"alert-link\">Volver Listado Productos</a>. \n");
+      out.write("            </div>\n");
+      out.write("        </div></center>\n");
+      out.write("        ");
+
+}
+      out.write("\n");
+      out.write("\n");
       out.write("        <form action=\"PaginaPrincipal.jsp\">\n");
       out.write("          <button type=\"submit\" class=\"btn btn-secondary\">Regresar</button>\n");
       out.write("        </form>\n");
-      out.write("        \n");
-      out.write("       \n");
+      out.write("    <!-- ----------------\n");
+      out.write("    VETANA EMERGENTE\n");
+      out.write("    ------------------ --> \n");
+      out.write("    <div class=\"overlay\" id=\"overlay\">\n");
+      out.write("\t<div class=\"popup\" id=\"popup\">\n");
+      out.write("            <a href=\"#\" id=\"btn-cerrar-popup\" class=\"btn-cerrar-popup\"><i class=\"fas fa-times\"></i></a>\n");
+      out.write("                    <form action=\"ModificarElementosBDDProductos.jsp\">\n");
+      out.write("                        <div class=\"contenedor-inputs\">\n");
+      out.write("                            ");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "ModificarElementosBDDProductos.jsp", out, false);
       out.write("\n");
-      out.write("    \n");
+      out.write("\t\t\t</div>\n");
+      out.write("                    </form>\n");
+      out.write("\t</div>\n");
+      out.write("    </div>\n");
+      out.write("\n");
+      out.write("\t<script src=\"EventosVentanaEmergente.js\"></script>\n");
       out.write("</section>\n");
       out.write("\n");
       out.write("</body>\n");

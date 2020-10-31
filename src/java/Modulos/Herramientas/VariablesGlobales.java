@@ -26,10 +26,7 @@ public class VariablesGlobales {
     public String categoria [] = {"Aceites y Lubricantes", "Llantas","Accesorios"};
     public static final String BDDCLIENTES = "clientes";
     public static final String BDDProductos = "productos";
-    
-    
-    public static final String DRIVER_DB = "org.postgresql.Driver";
-    
+    public static final String DRIVER_DB = "org.postgresql.Driver";  
     public static final String USER_DB = "postgres";
     public static final String  URL_BDD = "jdbc:postgresql://localhost:5432/BDDProyecto3";
     public static final String PASSWORD_DB = "wilson";

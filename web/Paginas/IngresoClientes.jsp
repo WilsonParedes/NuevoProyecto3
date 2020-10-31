@@ -1,7 +1,10 @@
+<%@page import="Modulos.Herramientas.VariablesGlobales"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import = "Modulos.Herramientas.GestionBDDs" %>
 <%@ page import = "Modulos.DataSistema.Clientes" %>
+<%@ page import = "Modulos.DataSistema.ClienteIndividual"%>
+<%@ page import = "Modulos.DataSistema.ClienteEmpresa"%>
 <%@ page import = "javax.swing.JOptionPane"%>
 
 <!DOCTYPE html>
@@ -20,8 +23,18 @@
 <title>Ingreso Clientes</title>
 </head>
 
-<script>
-    Grabar("El registro fue almacenado con éxito");
+<script type="text/javascript">
+    function activarempresa(){
+        var checkboxEmpresa = document.getElementById('checkboxEmpresa');
+        if(checkboxEmpresa.value!==null && checkboxEmpresa.value!== ""){
+            document.getElementById('txtContacoEmpresa').disabled =false;
+            document.getElementById('txtNombreEmpresa').disabled =false;
+        }else{
+            document.getElementById('txtContacoEmpresa').disabled =true;
+            document.getElementById('txtNombreEmpresa').disabled =true;
+        }
+        
+    }
 </script>
 
 <body>
@@ -56,8 +69,10 @@
     	String NIT= request.getParameter("txtNITIngresoClientes");
 	  	String DPI= request.getParameter("txtDPIIngresoClientes");
 	   	String Nombre= request.getParameter("txtNombreCompletoIngresoClientes");
-	   	String DatosEmpresa = request.getParameter("txtNombreCompletoIngresoClientes");
-	   	String ContactoEmpresa = request.getParameter("txtNombreCompletoIngresoClientes");
+	   	String DatosEmpresa = request.getParameter("txtNombreEmpresa");
+	   	String ContactoEmpresa = request.getParameter("txtContacoEmpresa");
+                String Genero = request.getParameter("radioGenero");
+                String EstadoCivil = request.getParameter("radioEstadoCivil");
             if(NIT==null && DPI==null && Nombre==null && DatosEmpresa==null&&ContactoEmpresa==null){
         %>	
             <form action="IngresoClientes.jsp" class="was-validated" id="TablaPrincipalIngresoClientes" method="POST">
@@ -76,13 +91,34 @@
       			<div class="valid-feedback">Valido.</div>
       			<div class="invalid-feedback">complete el campo.</div>
     		</div>
+                <div class="form-group">
+                    <br>Seleccione el Género<br>
+                    <input type="radio" name ="radioGenero" value = "Femenino" /> Femenino 
+                    <input type="radio" name ="radioGenero" value = "Masculino" /> Masculino <br>
+                    <div class="valid-feedback">Valido.</div>
+                    <div class="invalid-feedback">complete el campo.</div>
+    		</div>
+                
+                <div class="form-group">
+                    <br>Seleccione el Estado Civil<br>
+                    <input type="radio" name ="radioEstadoCivil" value = "Soltero" /> Soltero 
+                    <input type="radio" name ="radioEstadoCivil" value = "Casado" /> Casado <br>
+                    <div class="valid-feedback">Valido.</div>
+                    <div class="invalid-feedback">complete el campo.</div>
+    		</div>
+                <div class="form-group">
+                    Si actua como Representante legal o es Propietario de un negocio marque la casilla:
+                    <input type="checkbox" name ="checkboxEmpresa" id="checkboxEmpresa" value = "Empresa" onclick="activarempresa()"/> Empresa
+                    
+    		</div>
+                
     		<div class="form-group">
-      			Ingrese Datos de la Empresa: <input pattern="[A-Za-Z]" class="form-control" maxlength="30" name="txtNombreCompletoIngresoClientes" id ="txtNombreCompletoIngresoClientes" required>
+      			Ingrese Datos de la Empresa: <input pattern="[A-Za-Z]" class="form-control" maxlength="30" name="txtContacoEmpresa" id ="txtContacoEmpresa" disabled=""required>
       			<div class="valid-feedback">Valido.</div>
       			<div class="invalid-feedback">complete el campo.</div>
     		</div>
     		<div class="form-group">
-      			Ingrese Contacto de la empresa: <input pattern="[A-Za-Z]" class="form-control" maxlength="30" name="txtNombreCompletoIngresoClientes" id ="txtNombreCompletoIngresoClientes" required>
+                    Ingrese Contacto de la empresa: <input pattern="[A-Za-Z]" class="form-control" maxlength="30" name="txtNombreEmpresa" id ="txtNombreEmpresa" disabled="" required>
       			<div class="valid-feedback">Valido.</div>
       			<div class="invalid-feedback">complete el campo.</div>
     		</div>
@@ -92,15 +128,22 @@
                     </form>
         <%
             }else{
-       
-            	//1. Crear una instancia de CarreraDAO
-              	GestionBDDs gestion = new GestionBDDs();
-                //2. Crear una instancia de Carrera
-	
-                Clientes clientes = new Clientes(Nombre,NIT,"dato", "M/F","C/S",1);
+                ClienteIndividual ClienteIndividual;
+                ClienteEmpresa ClienteEmpresa;
+                 
+                 String empresa = (String) request.getParameter("checkboxEmpresa");
+               
+                if(empresa == null){
+                    ClienteIndividual = new ClienteIndividual(DPI, Nombre, NIT, "fecha", Genero, EstadoCivil,1);
+                    VariablesGlobales.gestion.saveCarrera(ClienteIndividual, null, null);
+                   
+                    
+                }else{
+                    ClienteEmpresa = new ClienteEmpresa(Nombre, NIT, "fecha", Genero, EstadoCivil, DatosEmpresa,ContactoEmpresa, 8,0);
+                    VariablesGlobales.gestion.saveCarrera(null, ClienteEmpresa, null);                                        
+                  
+                }     
                 
-                //3. Insertar en la DB la carrera
-                gestion.saveCarrera(clientes,null);
             %>
             <div class="alert alert-success" role="alert">
                 El cliente fue almacenado con exito. <a href="GestionConsultaClientes.jsp" class="alert-link">Ver Listado Clientes</a>. 
@@ -110,7 +153,7 @@
                 %>
                 
             <form action="IngresoClientes.jsp">
-          	<button type="submit" class="btn btn-secondary">Ingresar ootr Cliente</button>
+          	<button type="submit" class="btn btn-secondary">Ingresar otro Cliente</button>
             </form>
         </div></center>
 </section>

@@ -100,7 +100,7 @@
                 Productos productos = new Productos(Categoria,NombreProducto,Marca,Integer.parseInt(Precio));
                 
                 //3. Insertar en la DB la carrera
-                gestion.saveCarrera(null,productos);
+                gestion.saveCarrera(null,null,productos);
             %>
             <div class="alert alert-success" role="alert">
                 El Producto fue ingresado con éxito. <a href="GestionConsultaProductos.jsp" class="alert-link">Ver Listado de Productos</a>. 
